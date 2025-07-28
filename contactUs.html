@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyStore - Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+ 
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">MyStore</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="contactUs.html" class="active">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <h2>Contact Us</h2>
+        <p>We're here to help and answer any questions you might have</p>
+    </section>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>Have questions or feedback? We'd love to hear from you!</p>
+            
+            <div class="contact-method">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Our Location</h4>
+                    <p>123 Store Street, Retail City, RC 1001</p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>Call Us</h4>
+                    <p> 01125534141 </p>
+                    <p> 01099984940 </p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h4>Email Us</h4>
+                    <p>info@mystore.com</p>
+                    <p>support@mystore.com</p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h4>Working Hours</h4>
+                    <p>Monday - Friday: 9:00 - 23:59</p>
+                    <p>Saturday: 10:00 - 20:00</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="general">General Inquiry</option>
+                        <option value="product">Product Question</option>
+                        <option value="order">Order Issue</option>
+                        <option value="return">Return/Exchange</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>MyStore</h3>
+                <p>Your one-stop shop for all the latest tech products and accessories.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyStore. All rights reserved.</p>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            
+            const name = document.getElementById('name').value;
+            alert(`Thank you, ${name}! Your message has been sent. We'll get back to you soon.`);
+            
+           
+            this.reset();
+        });
+    </script>
+</body>
+</html>
