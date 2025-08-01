@@ -6,6 +6,7 @@
     <title>MyStore - Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
@@ -13,10 +14,20 @@
             <h1 class="logo">MyStore</h1>
            <nav>
     <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="login.html" class="active">Login</a></li>
         <li><a href="contactUs.html">Contact Us</a></li>
+        <li class="user-actions" style="display:none;">
+            <div class="dropdown">
+                <button class="user-icon">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
         </div>
@@ -114,5 +125,6 @@
             <p>&copy; 2025 MyStore. All rights reserved.</p>
         </div>
     </footer>
+    <script src="auth.js"></script>
 </body>
 </html>
