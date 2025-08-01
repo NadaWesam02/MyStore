@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyStore - Sign Up</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
@@ -16,6 +17,16 @@
         <li><a href="products.html">Products</a></li>
         <li><a href="login.html" class="active">Login</a></li>
         <li><a href="contactUs.html">Contact Us</a></li>
+        <li class="user-actions" style="display:none;">
+            <div class="dropdown">
+                <button class="user-icon">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
         </div>
