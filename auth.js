@@ -34,3 +34,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const logoutBtn = document.getElementById('logout-btn');
+    const userActions = document.querySelector('.user-actions');
+
+    if (isLoggedIn) {
+
+        if (userActions) userActions.style.display = 'block';
+        
+
+        const loginLinks = document.querySelectorAll('a[href="login.html"]');
+        loginLinks.forEach(link => {
+            link.style.display = 'none';
+        });
+    }
+
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        });
+    }
+});
