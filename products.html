@@ -3,19 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyStore - Online Store</title>
+    <title>MyStore - Products</title>
     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+ 
+    <style> 
+        .add-to-cart {
+            background-color: #ff4785;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #ff3a7a;
+        }
+        
+        .delete-btn {
+            background-color: #ff4785;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1;
+        }
+        
+        .delete-btn:hover {
+            background-color: #ff3a7a;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="header-container">
             <h1 class="logo">MyStore</h1>
-           <nav>
+            <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="products.html" class="active">Products</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="login.html" class="active">Login</a></li>
         <li><a href="contactUs.html">Contact Us</a></li>
+        <li class="user-actions" style="display:none;">
+            <div class="dropdown">
+                <button class="user-icon">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
         </div>
@@ -25,94 +69,8 @@
         <section aria-labelledby="products-heading">
             <h2 id="products-heading">Our Products</h2>
             
-            <div class="products">
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Wireless Headphones.jpeg" alt="Wireless Headphones">
-                    </div>
-                    <div class="product-info">
-                        <h3>Wireless Headphones</h3>
-                        <p>Experience high-quality sound with noise cancellation and long battery life.</p>
-                        <div class="price">$99.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Smart Watch.jpeg" alt="Smart Watch">
-                    </div>
-                    <div class="product-info">
-                        <h3>Smart Watch</h3>
-                        <p>Stay connected and track your fitness with this sleek and durable smart watch.</p>
-                        <div class="price">$149.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Bluetooth Speaker.jpeg" alt="Bluetooth Speaker">
-                    </div>
-                    <div class="product-info">
-                        <h3>Bluetooth Speaker</h3>
-                        <p>Portable speaker with rich sound and waterproof design for outdoor use.</p>
-                        <div class="price">$59.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Gaming Mouse.jpeg" alt="Gaming Mouse">
-                    </div>
-                    <div class="product-info">
-                        <h3>Gaming Mouse</h3>
-                        <p>High precision sensor and customizable buttons for the ultimate gaming experience.</p>
-                        <div class="price">$39.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="4K Monitor.jpeg" alt="4K Monitor">
-                    </div>
-                    <div class="product-info">
-                        <h3>4K Monitor</h3>
-                        <p>Stunning 27-inch 4K display with vivid colors and wide viewing angles.</p>
-                        <div class="price">$329.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Mechanical Keyboard.jpeg" alt="Mechanical Keyboard">
-                    </div>
-                    <div class="product-info">
-                        <h3>Mechanical Keyboard</h3>
-                        <p>Durable keyboard with tactile switches and customizable lighting effects.</p>
-                        <div class="price">$89.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Fitness Tracker.jpeg" alt="Fitness Tracker">
-                    </div>
-                    <div class="product-info">
-                        <h3>Fitness Tracker</h3>
-                        <p>Monitor your health and activity with this lightweight and waterproof tracker.</p>
-                        <div class="price">$49.99</div>
-                    </div>
-                </article>
-                
-                <article class="product-card">
-                    <div class="product-image">
-                        <img src="Drone Camera.jpeg" alt="Drone Camera">
-                    </div>
-                    <div class="product-info">
-                        <h3>Drone Camera</h3>
-                        <p>Capture stunning aerial footage with this easy-to-fly drone and high-res camera.</p>
-                        <div class="price">$399.99</div>
-                    </div>
-                </article>
+            <div class="products" id="products-container">
+               
             </div>
             
             <div class="slogan">
@@ -124,5 +82,73 @@
     <footer>
         <p>&copy; 2025 MyStore - All rights reserved</p>
     </footer>
+
+    <script src="productsData.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productsContainer = document.getElementById('products-container');
+            const products = getAllProducts();
+            
+            function renderProducts() {
+                productsContainer.innerHTML = '';
+                
+                products.forEach(product => {
+                    const productCard = document.createElement('article');
+                    productCard.className = 'product-card';
+                    productCard.dataset.id = product.id;
+                    
+                    const stars = Math.round(product.rating);
+                    let ratingStars = '';
+                    for (let i = 1; i <= 5; i++) {
+                        ratingStars += i <= stars ? '★' : '☆';
+                    }
+                    
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.title}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.title}</h3>
+                            <p>${product.description}</p>
+                            <div class="rating">${ratingStars} (${product.rating})</div>
+                            <div class="price">$${product.price.toFixed(2)}</div>
+                            <div class="product-actions">
+                                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                                <button class="delete-btn" data-id="${product.id}">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    productsContainer.appendChild(productCard);
+                });
+                
+              
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = parseInt(this.dataset.id);
+                        const product = getProductById(productId);
+                        alert(`Added ${product.title} to cart!`);
+                    });
+                });
+                
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = parseInt(this.dataset.id);
+                        const productIndex = products.findIndex(p => p.id === productId);
+                        
+                        if (productIndex !== -1) {
+                            products.splice(productIndex, 1);
+                            renderProducts();
+                            alert(`Product has been deleted!`);
+                        }
+                    });
+                });
+            }
+            
+            renderProducts();
+        });
+    </script>
+    <script src="auth.js"></script>
 </body>
 </html>
