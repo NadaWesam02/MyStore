@@ -4,7 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyStore - Login</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 2rem;
+        }
+        
+        .login-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .login-section h2 {
+            color: #ff4785;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #ff4785;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .auth-btn:hover {
+            background: #ff3a7a;
+        }
+        
+        .auth-link {
+            margin-top: 1.5rem;
+            color: #666;
+        }
+        
+        .auth-link a {
+            color: #ff4785;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,6 +87,16 @@
         <li><a href="products.html">Products</a></li>
         <li><a href="login.html" class="active">Login</a></li>
         <li><a href="contactUs.html">Contact Us</a></li>
+        <li class="user-actions" style="display:none;">
+            <div class="dropdown">
+                <button class="user-icon">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
         </div>
@@ -24,24 +105,40 @@
     <main class="auth-container">
         <section class="login-section">
             <h2>Welcome Back!</h2>
-            <form class="login-form" action="index.html" method="post">
+            <form class="login-form" id="loginForm">
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <button type="submit" class="auth-btn">Login</button>
             </form>
-          <p class="auth-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+            <p class="auth-link">Don't have an account? <a href="signup.html">Sign up</a></p>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 MyStore - All rights reserved</p>
     </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            
+            window.location.href = 'products.html';
+        });
+    </script>
     <script src="auth.js"></script>
 </body>
 </html>
