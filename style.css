@@ -332,7 +332,7 @@ input.invalid + .error-message {
 .hero {
     position: relative;
     height: 80vh;
-    background-image: url('hero-bg.jpg');
+    background-image: url('images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
