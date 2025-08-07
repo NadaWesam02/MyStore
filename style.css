@@ -29,6 +29,7 @@ body {
     min-height: min(100vh, 100dvh);
 }
 
+
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
@@ -667,4 +668,5 @@ input.invalid + .error-message {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 
